@@ -4,17 +4,17 @@ stages {
 stage('Build') {
 steps {
 echo 'BUILD'
-sh 'mvn clean install -DskipTests=true'
+bat 'mvn clean install -DskipTests=true'
 }
 }
 stage('Test') {
 steps {
-sh 'mvn test'
+bat 'mvn test'
 }
 }
 stage('Package') {
 steps {
-sh 'mvn clean package -DskipTests=true'
+bat 'mvn clean package -DskipTests=true'
 }
 }
 stage('Deploy') {
