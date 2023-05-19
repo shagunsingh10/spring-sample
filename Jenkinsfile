@@ -16,7 +16,7 @@ echo "MAVEN_HOME = ${MAVEN_HOME}"
 stage('Build') {
 steps {
 echo 'BUILD'
-sh 'mvn clean install'
+sh 'mvn clean install -DskipTests=true'
 }
 }
 stage('Test') {
@@ -26,7 +26,7 @@ sh 'mvn test'
 }
 stage('Package') {
 steps {
-sh 'mvn clean package'
+sh 'mvn clean package -DskipTests=true'
 }
 }
 stage('Deploy') {
