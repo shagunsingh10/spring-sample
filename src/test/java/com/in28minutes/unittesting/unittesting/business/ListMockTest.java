@@ -54,11 +54,11 @@ public class ListMockTest {
 
 	@Test
 	public void verificationBasics() {
-		// SUT
+		
 		String value1 = mock.get(0);
 		String value2 = mock.get(1);
 
-		// Verify
+		
 		verify(mock).get(0);
 		verify(mock, times(2)).get(anyInt());
 		verify(mock, atLeast(1)).get(anyInt());
@@ -70,10 +70,10 @@ public class ListMockTest {
 	@Test
 	public void argumentCapturing() {
 		
-		//SUT
+		
 		mock.add("SomeString");
 		
-		//Verification
+		
 		ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
 		verify(mock).add(captor.capture());
 		
@@ -84,11 +84,11 @@ public class ListMockTest {
 	@Test
 	public void multipleArgumentCapturing() {
 		
-		//SUT
+		
 		mock.add("SomeString1");
 		mock.add("SomeString2");
 		
-		//Verification
+		
 		ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
 		
 		verify(mock, times(2)).add(captor.capture());
@@ -103,30 +103,30 @@ public class ListMockTest {
 	@Test
 	public void mocking() {
 		ArrayList arrayListMock = mock(ArrayList.class);
-		System.out.println(arrayListMock.get(0));//null
-		System.out.println(arrayListMock.size());//0
+		System.out.println(arrayListMock.get(0));
+		System.out.println(arrayListMock.size());
 		arrayListMock.add("Test");
 		arrayListMock.add("Test2");
-		System.out.println(arrayListMock.size());//0
+		System.out.println(arrayListMock.size());
 		when(arrayListMock.size()).thenReturn(5);
-		System.out.println(arrayListMock.size());//5
+		System.out.println(arrayListMock.size());
 	}
 
 	@Test
 	public void spying() {
 		ArrayList arrayListSpy = spy(ArrayList.class);
 		arrayListSpy.add("Test0");
-		System.out.println(arrayListSpy.get(0));//Test0
-		System.out.println(arrayListSpy.size());//1
+		System.out.println(arrayListSpy.get(0));
+		System.out.println(arrayListSpy.size());
 		arrayListSpy.add("Test");
 		arrayListSpy.add("Test2");
-		System.out.println(arrayListSpy.size());//3
+		System.out.println(arrayListSpy.size());
 		
 		when(arrayListSpy.size()).thenReturn(5);
-		System.out.println(arrayListSpy.size());//5
+		System.out.println(arrayListSpy.size());
 		
 		arrayListSpy.add("Test4");
-		System.out.println(arrayListSpy.size());//5
+		System.out.println(arrayListSpy.size());
 		
 		verify(arrayListSpy).add("Test4");
 	}
